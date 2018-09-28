@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavController } from 'ionic-angular'; 
+import { TabsPage } from '../tabs/tabs';
+import { CadastroPage } from '../cadastro/cadastro';
+
 
 /**
  * Generated class for the IndexPage page.
@@ -21,17 +25,14 @@ export class IndexPage {
   messagePassword = "";
   errorEmail = false;
   errorPassword = false;
-
  
-  
-  constructor(formBuilder: FormBuilder) {
+ 
+  constructor(public formBuilder: FormBuilder, public navCtrl: NavController) {
     this.loginForm = formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(20),
       Validators.required])],
-    });
-
-     
+    });     
   }
 
   login(){
@@ -40,7 +41,7 @@ export class IndexPage {
     if(!this.loginForm.valid){
       if(!email.valid) {
         this.errorEmail = true;
-        this.messageEmail = "Emil inválido!";        
+        this.messageEmail = "Email inválido!";        
       } else {
         this.messageEmail = "";
       }
@@ -55,15 +56,14 @@ export class IndexPage {
 
     else {
       alert("Login Realizado!");
+      this.navCtrl.setRoot(TabsPage);
     }
 
   }
 
-
   cadastro(){
-    alert("Realizar cadastro!");
+    //alert("Realizar cadastro!");
+    this.navCtrl.setRoot(CadastroPage);
     
   }
- 
-
 }

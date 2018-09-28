@@ -14,6 +14,7 @@ import { IndexPage } from '../pages/index/index';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     HomePage,
     TabsPage,
     FeedPage,
-    IndexPage
+    IndexPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     HomePage,
     TabsPage,
     FeedPage,
-    IndexPage
+    IndexPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,
