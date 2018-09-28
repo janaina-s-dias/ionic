@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder } from '@angular/forms';
-//import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the IndexPage page.
@@ -9,21 +7,63 @@ import { FormBuilder } from '@angular/forms';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+ //Tipos de navegaçao: public navCtrl: NavController, public navParams: NavParams, 
 
-@IonicPage()
+
 @Component({
   selector: 'page-index',
   templateUrl: 'index.html',
 })
 export class IndexPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, formBuilder: FormBuilder) {
+  public loginForm: any;
+  messageEmail = ""
+  messagePassword = "";
+  errorEmail = false;
+  errorPassword = false;
 
+ 
+  
+  constructor(formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(20),
+      Validators.required])],
+    });
+
+     
+  }
+
+  login(){
+    let {email, password} = this.loginForm.controls;
+
+    if(!this.loginForm.valid){
+      if(!email.valid) {
+        this.errorEmail = true;
+        this.messageEmail = "Emil inválido!";        
+      } else {
+        this.messageEmail = "";
+      }
+
+      if(!password.valid){
+        this.errorPassword = true;
+        this.messagePassword = "A senha precisa ter de 6 a 20 caracteres!";
+      } else {
+        this.messagePassword = "";
+      }
+    }
+
+    else {
+      alert("Login Realizado!");
+    }
+
+  }
+
+
+  cadastro(){
+    alert("Realizar cadastro!");
     
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IndexPage');
-  }
+ 
 
 }
