@@ -24,6 +24,7 @@ export class CadastroPage {
   
    constructor(public formBuilder: FormBuilder, public navCtrl: NavController) {
     this.loginForm = formBuilder.group({
+    //    nomeCompleto: ['', Validators.required],
     //    email: ['', Validators.required],
     //    password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(20),
     //    Validators.required])],
